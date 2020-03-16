@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="c6535329-74d2-47f1-890d-919fdf85d828" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1ZDXwmHSiH2Bgz6GWf7jtgT3sB7" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/test/resources/drivers" />
+    <property name="project.structure.last.edited" value="Global Libraries" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RunManager" selected="TestNG.TestRunner">
+    <configuration name="Feature: login" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+      <option name="CUCUMBER_CORE_VERSION" value="5" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/java/features/login.feature" />
+      <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
+      <module name="Automation" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter" />
+      <option name="SUGGESTED_NAME" value="Feature: login" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="io.cucumber.core.cli.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestRunner" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="Automation" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="testRunner.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="testRunner" />
+      <option name="MAIN_CLASS_NAME" value="testRunner.TestRunner" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="TestNG.TestRunner" />
+        <item itemvalue="Cucumber java.Feature: login" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c6535329-74d2-47f1-890d-919fdf85d828" name="Default Changelist" comment="" />
+      <created>1584374881054</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1584374881054</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="1320" height="172" key="GridCell.Tab.0.bottom" timestamp="1584377740831">
+      <screen x="0" y="36" width="1366" height="732" />
+    </state>
+    <state width="1320" height="172" key="GridCell.Tab.0.bottom/0.36.1366.732@0.36.1366.732" timestamp="1584377740831" />
+    <state width="1320" height="172" key="GridCell.Tab.0.center" timestamp="1584377740830">
+      <screen x="0" y="36" width="1366" height="732" />
+    </state>
+    <state width="1320" height="172" key="GridCell.Tab.0.center/0.36.1366.732@0.36.1366.732" timestamp="1584377740830" />
+    <state width="1320" height="172" key="GridCell.Tab.0.left" timestamp="1584377740829">
+      <screen x="0" y="36" width="1366" height="732" />
+    </state>
+    <state width="1320" height="172" key="GridCell.Tab.0.left/0.36.1366.732@0.36.1366.732" timestamp="1584377740829" />
+    <state width="1320" height="172" key="GridCell.Tab.0.right" timestamp="1584377740831">
+      <screen x="0" y="36" width="1366" height="732" />
+    </state>
+    <state width="1320" height="172" key="GridCell.Tab.0.right/0.36.1366.732@0.36.1366.732" timestamp="1584377740831" />
+    <state x="180" y="36" key="SettingsEditor" timestamp="1584375989746">
+      <screen x="0" y="36" width="1366" height="732" />
+    </state>
+    <state x="180" y="36" key="SettingsEditor/0.36.1366.732@0.36.1366.732" timestamp="1584375989746" />
+    <state x="395" y="118" key="com.intellij.ide.util.TipDialog" timestamp="1584374914271">
+      <screen x="0" y="36" width="1366" height="732" />
+    </state>
+    <state x="395" y="118" key="com.intellij.ide.util.TipDialog/0.36.1366.732@0.36.1366.732" timestamp="1584374914271" />
+  </component>
+</project>
