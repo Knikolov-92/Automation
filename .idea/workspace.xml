@@ -2,12 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c6535329-74d2-47f1-890d-919fdf85d828" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/Red_Deveel.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/features/registration.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/features/registration.feature" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/stepdefs/Registration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/stepdefs/Registration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/stepdefs/Login.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/stepdefs/Login.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/testRunner/TestRunner.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/testRunner/TestRunner.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/utils/UtilRegPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/utils/UtilRegPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/stepdefs/Registration.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/stepdefs/Registration.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/utils/UtilRegPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/utils/UtilRegPage.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +48,7 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
-  <component name="RunManager" selected="TestNG.TestRunner">
+  <component name="RunManager" selected="Cucumber java.Feature: registration">
     <configuration name="Feature: login" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
       <option name="CUCUMBER_CORE_VERSION" value="5" />
       <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/java/features/login.feature" />
@@ -118,10 +118,10 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="414" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1584615620371">
+    <state x="414" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1584634964048">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="414" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1584615620371" />
+    <state x="414" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1584634964048" />
     <state x="689" y="303" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1584615484389">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -130,29 +130,29 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1584615494974" />
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1584626615264">
-      <screen x="-1920" y="0" width="1920" height="1040" />
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1584640656213">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1584626615264" />
-    <state width="1860" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1584626538234" />
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1584640656213" />
     <state width="1320" height="172" key="GridCell.Tab.0.bottom/0.36.1366.732@0.36.1366.732" timestamp="1584377740831" />
-    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1584626615264">
-      <screen x="-1920" y="0" width="1920" height="1040" />
+    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1584640656213">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1584626615264" />
-    <state width="1860" height="282" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1584626538234" />
+    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1584640656213" />
     <state width="1320" height="172" key="GridCell.Tab.0.center/0.36.1366.732@0.36.1366.732" timestamp="1584377740830" />
-    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1584626615264">
-      <screen x="-1920" y="0" width="1920" height="1040" />
+    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1584640656212">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1584626615264" />
-    <state width="1860" height="282" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1584626538234" />
+    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1584640656212" />
     <state width="1320" height="172" key="GridCell.Tab.0.left/0.36.1366.732@0.36.1366.732" timestamp="1584377740829" />
-    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1584626615264">
-      <screen x="-1920" y="0" width="1920" height="1040" />
+    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1584640656213">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1584626615264" />
-    <state width="1860" height="282" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1584626538234" />
+    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1584640656213" />
     <state width="1320" height="172" key="GridCell.Tab.0.right/0.36.1366.732@0.36.1366.732" timestamp="1584377740831" />
     <state x="180" y="36" key="SettingsEditor" timestamp="1584375989746">
       <screen x="0" y="36" width="1366" height="732" />
@@ -163,5 +163,9 @@
     </state>
     <state x="555" y="117" key="com.intellij.ide.util.TipDialog/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1584613818443" />
     <state x="395" y="118" key="com.intellij.ide.util.TipDialog/0.36.1366.732@0.36.1366.732" timestamp="1584374914271" />
+    <state x="616" y="240" key="run.anything.popup" timestamp="1584633857230">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="616" y="240" key="run.anything.popup/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1584633857230" />
   </component>
 </project>

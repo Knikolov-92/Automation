@@ -12,8 +12,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import utils.UtilRegPage;
-import java.util.List;
-import java.util.Map;
+
 import java.util.concurrent.TimeUnit;
 
 import static org.testng.Assert.*;
@@ -24,9 +23,10 @@ public class Registration {
     private UtilRegPage regPage = new UtilRegPage();
     private static WebDriver driver;
     private static final String MyAccountURL = "https://shop.demoqa.com/my-account/";
+    private String expectedErrorText;
 //==========================================Test Preconditions==========================================\
 
-    @Given("^The user has navigated to My Account Page$")
+    @Given("The user has navigated to My Account Page")
     public void theUserHasNavigatedToMyAccountPage() {
 
         System.setProperty("webdriver.chrome.driver", "src/test/resources/drivers/chromedriver.exe");
@@ -40,7 +40,7 @@ public class Registration {
         regPage = PageFactory.initElements(driver, UtilRegPage.class);
       }
 
-    @Then("^The user should see the correct page title$")
+    @Then("The user should see the correct page title")
     public void theUserShouldSeeTheCorrectPageTitle() {
 
         String expectedPageTitle = "My Account – ToolsQA Demo Site";
@@ -48,7 +48,7 @@ public class Registration {
         assertEquals(driver.getTitle(), expectedPageTitle);
     }
 //==========================================New Scenario==========================================\
-    @When("^The user scrolls down the page$")
+    @When("The user scrolls down the page")
     public void theUserScrollsDownThePage() throws InterruptedException {
 
         JavascriptExecutor js = (JavascriptExecutor) driver;
@@ -58,7 +58,7 @@ public class Registration {
         }
     }
 //------------------------------------------------------------
-    @Then("^The user should see the Registration form$")
+    @Then("The user should see the Registration form")
     public void theUserShouldSeeTheRegistrationForm() {
 
         WebElement[] elementsArray = {
@@ -77,14 +77,10 @@ public class Registration {
         driver.quit();
     }
 //==========================================New Scenario==========================================\
-    @Given("User enters personal details\\(invalid username):")
-       public void userEntersPersonalDetailsInRegForm( DataTable dataTable) {
+    @Given("User enters personal details:")
+    public void userEntersPersonalDetailsInRegForm(DataTable table ) {
 
-        List <Map<String, String>> data = dataTable.asMaps(String.class, String.class);
-
-        regPage.RegUsernameField.sendKeys(data.get(0).get("username") );
-        regPage.RegEmailField.sendKeys(data.get(0).get("email") );
-        regPage.RegPasswordField.sendKeys(data.get(0).get("password") );
+       regPage.userEntersPersonalDetailsInRegForm(table);
     }
 //------------------------------------------------------------
     @When("The Register Button is clicked")
@@ -97,7 +93,7 @@ public class Registration {
     @Then("The user should see the InvalidUsername error")
     public void theUserShouldSeeTheInvalidUsernameError() {
 
-        String expectedErrorText = "Error: Please enter a valid account username.";
+        expectedErrorText = "Error: Please enter a valid account username.";
         Assert.assertTrue(regPage.RegInvalidUsernameError.isDisplayed() );
         Assert.assertEquals(regPage.RegInvalidUsernameError.getText(), expectedErrorText);
     }
@@ -105,10 +101,33 @@ public class Registration {
     @And("The user should see the Register button")
     public void theUserShouldSeeTheRegisterButton() {
 
-        Assert.assertTrue(regPage.RegisterButton.isDisplayed() );
+        regPage.UserShouldSeeTheRegisterButton();
         driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
         driver.quit();
     }
 //==========================================New Scenario==========================================\
+    @Then("The user should see the InvalidEmail error")
+    public void theUserShouldSeeTheInvalidEmailError() {
 
+        expectedErrorText = "Error: Please provide a valid email address.";
+        Assert.assertTrue(regPage.RegInvalidEmailError.isDisplayed() );
+        Assert.assertEquals(regPage.RegInvalidEmailError.getText(), expectedErrorText);
+    }
+//==========================================New Scenario==========================================\
+    @Then("The user should see the UsernameAlreadyTaken error")
+    public void theUserShouldSeeTheUsernameAlreadyTakenError() {
+
+    expectedErrorText = "Error: An account is already registered with that username. Please choose another.";
+    Assert.assertTrue(regPage.UsernameAlreadyTakenError.isDisplayed() );
+    Assert.assertEquals(regPage.UsernameAlreadyTakenError.getText(), expectedErrorText);
+    }
+//==========================================New Scenario==========================================\
+    @Then("The user should see the EmailAlreadyTaken error")
+    public void theUserShouldSeeTheEmailAlreadyTakenError() {
+
+        expectedErrorText = "Error: An account is already registered with your email address. Please log in.";
+        Assert.assertTrue(regPage.EmailAlreadyTakenError.isDisplayed() );
+        Assert.assertEquals(regPage.EmailAlreadyTakenError.getText(), expectedErrorText);
+    }
+//==========================================New Scenario==========================================\
 }
