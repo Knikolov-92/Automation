@@ -20,7 +20,7 @@ public class LoginPage {
     WebElement loginButton;
 
     @FindBy(xpath = "//*[@id=\"customer_login\"]/div[1]/form/p[4]/a")
-    WebElement lostPasword;
+    WebElement lostPassword;
 
     public LoginPage(WebDriver driver){
         this.driver = driver;
