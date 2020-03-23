@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c6535329-74d2-47f1-890d-919fdf85d828" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/Red_Deveel.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/features/registration.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/features/registration.feature" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/stepdefs/Registration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/stepdefs/RegistrationSteps.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/utils/UtilRegPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/page_objects/RegistrationPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/stepdefs/Registration.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/utils/UtilRegPage.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,7 +37,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../DemoSerenity" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/test/java/page_objects" />
     <property name="project.structure.last.edited" value="Global Libraries" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -162,11 +156,11 @@
     </state>
     <state x="253" y="0" key="SettingsEditor/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1584691651646" />
     <state x="180" y="36" key="SettingsEditor/0.36.1366.732@0.36.1366.732" timestamp="1584375989746" />
-    <state x="555" y="117" key="com.intellij.ide.util.TipDialog" timestamp="1584708520532">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="395" y="118" key="com.intellij.ide.util.TipDialog" timestamp="1584950147967">
+      <screen x="0" y="36" width="1366" height="732" />
     </state>
     <state x="555" y="117" key="com.intellij.ide.util.TipDialog/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1584708520532" />
-    <state x="395" y="118" key="com.intellij.ide.util.TipDialog/0.36.1366.732@0.36.1366.732" timestamp="1584374914271" />
+    <state x="395" y="118" key="com.intellij.ide.util.TipDialog/0.36.1366.732@0.36.1366.732" timestamp="1584950147967" />
     <state x="616" y="240" key="run.anything.popup" timestamp="1584697108958">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
