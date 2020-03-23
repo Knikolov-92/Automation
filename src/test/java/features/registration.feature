@@ -5,12 +5,14 @@ Description: As a user, I want to be able to register on site, so that I can use
   Background: The user is on My Account Page
     Given The user has navigated to My Account Page
     And The user scrolls down the page
-    Then The user should see the correct page title
+    Then The user sees the correct MyAccount page title
+
 
   Scenario: The user sees the Registration form
-    When The user should see the correct page title
+    When The user sees the correct MyAccount page title
     Then The user should see the Registration form
     And The browser should close
+
 
   Scenario: User sees the VeryWeak Password warning
     Given User enters personal details:
@@ -21,6 +23,7 @@ Description: As a user, I want to be able to register on site, so that I can use
     And The Register button should not be clickable
     But The browser should close
 
+
   Scenario: User sees the Weak Password warning
     Given User enters personal details:
       | username     | email                | password    |
@@ -29,6 +32,7 @@ Description: As a user, I want to be able to register on site, so that I can use
     And The user should see the Register button
     And The Register button should not be clickable
     But The browser should close
+
 
   Scenario: User sees the Medium Password warning
     Given User enters personal details:
@@ -39,6 +43,7 @@ Description: As a user, I want to be able to register on site, so that I can use
     And The Register button should be clickable
     But The browser should close
 
+
   Scenario: User sees the Strong Password warning
     Given User enters personal details:
       | username     | email                | password    |
@@ -48,6 +53,7 @@ Description: As a user, I want to be able to register on site, so that I can use
     And The Register button should be clickable
     But The browser should close
 
+
   Scenario: User sees InvalidUsername error
     Given User enters personal details:
       | username | email                     | password        |
@@ -56,6 +62,7 @@ Description: As a user, I want to be able to register on site, so that I can use
     Then The user should see the InvalidUsername error
     And The user should see the Register button
     But The browser should close
+
 
   Scenario Outline: User sees InvalidEmail error
     Given User enters personal details:
@@ -72,6 +79,7 @@ Description: As a user, I want to be able to register on site, so that I can use
       | &^@#()=+      | alabala@com   | AbcdefgHIJK |
       | &^@#()=+      | 123123@1234   | AbcdefgHIJK |
 
+
   Scenario: Registered user sees the AlreadyRegisteredUsername error
     Given User enters personal details:
       | username     | email                       | password    |
@@ -81,11 +89,21 @@ Description: As a user, I want to be able to register on site, so that I can use
     And The user should see the Register button
     But The browser should close
 
+
   Scenario: Registered user sees the EmailAlreadyTaken error
     Given User enters personal details:
       | username     | email                | password    |
       | alabala12345 | validEmail@gmail.com | AbcdefgHIJK |
     When The Register Button is clicked
     Then The user should see the EmailAlreadyTaken error
+    And The user should see the Register button
+    But The browser should close
+
+
+  Scenario: User navigates to privacy policy page
+    Given Privacy policy link is clicked
+    Then The user should see the privacy policy page in new tab
+    When The window is closed
+    Then The user sees the correct MyAccount page title
     And The user should see the Register button
     But The browser should close
