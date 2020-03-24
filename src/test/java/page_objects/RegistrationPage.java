@@ -1,6 +1,7 @@
 package page_objects;
 
 import io.cucumber.datatable.DataTable;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
@@ -10,11 +11,13 @@ import org.testng.Assert;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
+import java.util.UUID;
+
 
 public class RegistrationPage extends BasePage {
 
 //==========================================WebElements(locators)==========================================\
+
     @FindBy(how = How.CSS, using = "[method='post'].woocommerce-form.woocommerce-form-register.register")
     public WebElement registerForm;
 
@@ -42,17 +45,11 @@ public class RegistrationPage extends BasePage {
     @FindBy(how = How.CSS, using = "div.woocommerce-notices-wrapper ul.woocommerce-error[role='alert']")
     public WebElement regInvalidInputRegError;
 
-    @FindBy(how = How.CSS, using = "div.woocommerce-password-strength.short[aria-live='polite']")
-    public WebElement regPasswordWarningVeryWeak;
+    @FindBy(how = How.CSS, using = "div.woocommerce-password-strength")
+    public WebElement regPasswordWarning;
 
-    @FindBy(how = How.CSS, using = "div.woocommerce-password-strength.bad[aria-live='polite']")
-    public WebElement regPasswordWarningWeak;
-
-    @FindBy(how = How.CSS, using = "div.woocommerce-password-strength.good[aria-live='polite']")
-    public WebElement regPasswordWarningMedium;
-
-    @FindBy(how = How.CSS, using = "div.woocommerce-password-strength.strong[aria-live='polite']")
-    public WebElement regPasswordWarningStrong;
+    @FindBy(how = How.CLASS_NAME, using = "woocommerce-password-hint")
+    public WebElement regPasswordHint;
 
     @FindBy(how = How.CSS, using = ".woocommerce-privacy-policy-text")
     public WebElement privacyPolicy;
@@ -62,6 +59,18 @@ public class RegistrationPage extends BasePage {
 
     @FindBy(how = How.CLASS_NAME, using = "button-404")
     public WebElement returnToHome404button;
+
+    @FindBy(how = How.CSS, using = "p.login.message")
+    public WebElement regSuccessMessage;
+
+    @FindBy(how = How.CSS, using = "#loginform[name='loginform']")
+    public WebElement regSuccessLoginForm;
+
+    @FindBy(how = How.CSS, using = "#wp-submit[name='wp-submit']")
+    public WebElement regSuccessLoginButton;
+
+    @FindBy(how = How.CSS, using = "p#backtoblog")
+    public WebElement regSuccessBackToSiteLink;
 
 //====================================================================================\
 //Navigate to https://shop.demoqa.com/my-account/ and initialize web elements on page
@@ -78,19 +87,21 @@ public class RegistrationPage extends BasePage {
         Assert.assertEquals(driver.getTitle(), expectedPageTitle);
     }
 //====================================================================================\
-    public void registerButtonShouldBeSeen() {
+    //check register button is displayed
+    public void checkRegisterButtonIsDisplayed() {
 
         Assert.assertTrue(registerButton.isDisplayed() );
     }
 //====================================================================================\
-    public void registerButtonIsClicked() {
+    //click on register button
+    public void registerButtonIsClicked() throws InterruptedException {
 
         registerButton.click();
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        Thread.sleep(3000);
     }
 //====================================================================================\
     //Check Registration Form is displayed with all the elements
-    public void checkRegistrationForm() {
+    public void checkRegistrationForm() throws InterruptedException {
 
         String regPolicyText = "Your personal data will be used to support your experience";
         WebElement[] elementsArray = {
@@ -99,7 +110,7 @@ public class RegistrationPage extends BasePage {
                 regEmailLabel, regEmailField,
                 regPasswordLabel, regPasswordField,
                 registerButton, privacyPolicy,
-        };
+                };
 //------------------------------------------------------------
         for (int n = 0; n < elementsArray.length; n++) {
 
@@ -110,30 +121,50 @@ public class RegistrationPage extends BasePage {
                 Assert.assertTrue(elementsArray[n].getText().contains(regPolicyText));
             }
         }
-        driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+        Thread.sleep(1000);
     }
 //====================================================================================\
-    public void scrollWindow(WebElement elementToScrollTo) {
 
-        //This will scroll the page until an element is found:
-        Actions actions = new Actions(driver);
-        actions.moveToElement(elementToScrollTo);
-        actions.perform();
+//====================================================================================\
+    //check whether the Register Button is enabled
+    public void checkRegisterButtonIsClickable(String clickable) {
 
-        driver.manage().timeouts().implicitlyWait(500, TimeUnit.MILLISECONDS);
+        switch (clickable) {
+            case "yes":
+                Assert.assertTrue(registerButton.isEnabled() );
+                break;
+
+            case "no":
+                Assert.assertFalse(registerButton.isEnabled() );
+                break;
+
+            default:
+                System.out.println("No option is selected, skipping check for ButtonIsClickable");
+        }
     }
 //====================================================================================\
-    public void registerButtonShouldBeClickable() {
+    //check whether the Password Hint is displayed
+    public void checkPasswordHintDisplayed(String displayed) {
 
-        Assert.assertTrue(registerButton.isEnabled() );
+        switch (displayed) {
+
+            case "yes":
+                Assert.assertTrue(regPasswordHint.isDisplayed() );
+                break;
+
+            case "no":
+                //Assert.assertFalse(regPasswordHint.isDisplayed() );
+                Assert.assertEquals(0, driver.findElements(By.className("woocommerce-password-hint")).size() );
+                //Assert.assertNull(regPasswordHint);
+                break;
+
+            default:
+                System.out.println("No option is selected, skipping check for PasswordHintIsDisplayed");
+        }
     }
 //====================================================================================\
-    public void registerButtonShouldNotBeClickable() {
-
-        Assert.assertFalse(registerButton.isEnabled() );
-    }
-//====================================================================================\
-    public void userEntersPersonalDetailsInRegForm( DataTable dataTable) {
+    //enter username, email and password in Registration form
+    public void userEntersPersonalDetailsInRegForm( DataTable dataTable) throws InterruptedException {
 
         List<Map<String, String>> data = dataTable.asMaps(String.class, String.class);
 
@@ -142,95 +173,51 @@ public class RegistrationPage extends BasePage {
             }else{
                 regUsernameField.sendKeys(data.get(0).get("username"));
             }
-        driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+        Thread.sleep(1000);
 
             if (data.get(0).get("email").isEmpty() ) {
                 regEmailField.clear();
             }else{
                 regEmailField.sendKeys(data.get(0).get("email") );
             }
-        driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+        Thread.sleep(1000);
 
             if (data.get(0).get("password").isEmpty()) {
                 regPasswordField.clear();
             }else{
                 regPasswordField.sendKeys(data.get(0).get("password") );
             }
-        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+        Thread.sleep(1000);
     }
 //====================================================================================\
-    public void checkRegistrationError(String errorText) {
+    //check for correct error text upon invalid registration input submitted
+    public void checkRegistrationError(String expectedErrorText) {
 
-        String expectedErrorText = "";
-
-        switch ( errorText ){
-            case "InvalidUsername":
-                expectedErrorText = "Error: Please enter a valid account username.";
-                break;
-
-            case "InvalidEmail":
-                expectedErrorText = "Error: Please provide a valid email address.";
-                break;
-
-            case "UsernameAlreadyTaken":
-                expectedErrorText = "Error: An account is already registered with that username. Please choose another.";
-                break;
-
-            case "EmailAlreadyTaken":
-                expectedErrorText = "Error: An account is already registered with your email address. Please log in.";
-                break;
-        }
         Assert.assertTrue(regInvalidInputRegError.isDisplayed() );
         Assert.assertEquals(regInvalidInputRegError.getText(), expectedErrorText);
     }
 //====================================================================================\
-    public void checkPasswordWarning(String inputText) {
+    //check password warning when password is being typed in the password field
+    public void checkPasswordWarning(String expectedWarningText) {
 
         Actions actions = new Actions(driver);
-        String expectedWarningText = "";
-
         //actions added temporarily to test this kind of warning/note
         actions.doubleClick(regPasswordField).perform();
         actions.doubleClick(regUsernameField).perform();
         actions.doubleClick(regPasswordField).perform();
 
-        switch ( inputText ){
-            case "VeryWeak":
-                expectedWarningText = "Very weak - Please enter a stronger password.";
-
-                Assert.assertTrue(regPasswordWarningVeryWeak.isDisplayed() );
-                Assert.assertEquals(regPasswordWarningVeryWeak.getText(), expectedWarningText);
-                break;
-
-            case "Weak":
-                expectedWarningText = "Weak - Please enter a stronger password.";
-
-                Assert.assertTrue(regPasswordWarningWeak.isDisplayed() );
-                Assert.assertEquals(regPasswordWarningWeak.getText(), expectedWarningText);
-                break;
-
-            case "Medium":
-                expectedWarningText = "Medium";
-
-                Assert.assertTrue(regPasswordWarningMedium.isDisplayed() );
-                Assert.assertEquals(regPasswordWarningMedium.getText(), expectedWarningText);
-                break;
-
-            case "Strong":
-                expectedWarningText = "Strong";
-
-                Assert.assertTrue(regPasswordWarningStrong.isDisplayed() );
-                Assert.assertEquals(regPasswordWarningStrong.getText(), expectedWarningText);
-                break;
-        }
+        Assert.assertTrue(regPasswordWarning.isDisplayed() );
+        Assert.assertEquals(regPasswordWarning.getText(), expectedWarningText);
     }
 //====================================================================================\
-    public void clickPrivacyPolicyLink() {
+    //find and click privacy policy link in the registration form
+    public void clickPrivacyPolicyLink() throws InterruptedException {
 
         privacyPolicyLink.click();
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        Thread.sleep(5000);
     }
 //====================================================================================\
+    //check privacy policy page(currently not existing) is opened when privacy policy link is clicked
     public void checkPrivacyPolicyPage() {
 
         ArrayList<String> newTab = new ArrayList<String>(driver.getWindowHandles());
@@ -246,25 +233,66 @@ public class RegistrationPage extends BasePage {
         Assert.assertTrue(returnToHome404button.getText().equalsIgnoreCase(expectedReturnButtonText) );
     }
 //====================================================================================\
-    public void endWindowSession() throws InterruptedException {
+    //enter valid username, email and password to test successful registration
+    public void UserEntersValidRandomizedPersonalDetails(DataTable dataTable ) throws InterruptedException {
 
-        //switch 1st tab(if others are open - close them first)
-        ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
+        List<Map<String, String>> data = dataTable.asMaps(String.class, String.class);
+        String randomizedUsername;
+        String randomizedEmail;
+        String randomizedPassword;
 
-        if (tabs.size()  > 1)
-        {
-            for(int iCount = 2; iCount <= tabs.size(); iCount++){
+        randomizedUsername = (data.get(0).get("username")) + UUID.randomUUID().toString();
+        System.out.println("Username used is:" +randomizedUsername);
 
-                driver.close();
-                Thread.sleep(3);
-            }
-        }
-        driver.switchTo().window(tabs.get(0));
+        regUsernameField.sendKeys(randomizedUsername);
         Thread.sleep(1000);
+
+        randomizedEmail = (data.get(0).get("email")) + UUID.randomUUID().toString() + "@example.com";
+        System.out.println("Email used is:" +randomizedEmail);
+
+        regEmailField.sendKeys(randomizedEmail);
+        Thread.sleep(1000);
+
+        randomizedPassword = (data.get(0).get("password")) + UUID.randomUUID().toString();
+        System.out.println("Password used is:" +randomizedPassword);
+
+        regPasswordField.sendKeys(randomizedPassword);
+        Thread.sleep(1000);
+
     }
 //====================================================================================\
-    public void endBrowserSession(){
-        driver.quit();
+    //check that after successful registration, user is redirected to the correct page
+    public void checkSuccessfulRegistrationPageIsDisplayed(){
+
+        String expectedURL = BasePage.properties.getProperty("myAccountURL");
+        String actualURL = driver.getCurrentUrl();
+        String expectedSuccessMessage = "Your session has expired because it has been over 60 minutes since your last login. Please log back in to continue.";
+        String expectedBackToSiteLinkText = "← Back to ToolsQA Demo Site";
+
+        Assert.assertNotEquals(actualURL, expectedURL);
+        Assert.assertTrue(regSuccessMessage.isDisplayed() );
+        Assert.assertTrue(regSuccessLoginForm.isDisplayed() );
+        Assert.assertTrue(regSuccessLoginButton.isDisplayed() );
+        Assert.assertTrue(regSuccessBackToSiteLink.isDisplayed() );
+
+        Assert.assertEquals(regSuccessMessage.getText(), expectedSuccessMessage);
+        Assert.assertEquals(regSuccessBackToSiteLink.getText(), expectedBackToSiteLinkText);
+    }
+//====================================================================================\
+    //check that when user is on the redirected page after successful registration, user can go back to default page
+    public void clickBackToSiteLinkAfterRegistering() throws InterruptedException {
+
+        regSuccessBackToSiteLink.click();
+        Thread.sleep(3000);
+    }
+//====================================================================================\
+    //check that defaultURL is the current one
+    public void checkDefaultURLIsCorrect(){
+
+        String expectedDefaultURL = BasePage.properties.getProperty("baseURL");
+        String actualURL = driver.getCurrentUrl();
+
+        Assert.assertEquals(actualURL, expectedDefaultURL);
     }
 //====================================================================================\
 }
