@@ -18,7 +18,7 @@ public class Wishlist {
 
     @Before
     public void setUp(){
-        System.setProperty("webdriver.chrome.driver", "src/test/resources/drivers/chromedriver");
+        System.setProperty("webdriver.chrome.driver", "src/test/resources/drivers/chromedriver.exe");
         driver = new ChromeDriver();
         wishlist = new WishlistPage(driver);
 

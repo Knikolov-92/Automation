@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c6535329-74d2-47f1-890d-919fdf85d828" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/page_objects/BasePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/page_objects/BasePage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/browser-config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/browser-config.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/drivers/chromedriver" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/drivers/chromedriver" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/page_objects/BasePage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/page_objects/BasePage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/stepdefs/Wishlist.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/stepdefs/Wishlist.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
