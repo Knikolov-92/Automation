@@ -30,7 +30,7 @@ public class BasePage {
 
         if (properties.getProperty("browser").equals("Chrome")) {
 
-            System.setProperty("webdriver.chrome.driver", "src/test/resources/drivers/chromedriver.exe");
+            System.setProperty("webdriver.chrome.driver", "src/test/resources/drivers/chromedriver");
             driver = new ChromeDriver();
             // }else{ more browsers...}
         }
