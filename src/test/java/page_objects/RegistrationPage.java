@@ -16,6 +16,8 @@ import java.util.UUID;
 
 public class RegistrationPage extends BasePage {
 
+    public final static String MY_ACCOUNT_URL = "https://shop.demoqa.com/my-account/";
+
 //==========================================WebElements(locators)==========================================\
 
     @FindBy(how = How.CSS, using = "[method='post'].woocommerce-form.woocommerce-form-register.register")
@@ -43,7 +45,7 @@ public class RegistrationPage extends BasePage {
     public WebElement registerButton;
 
     @FindBy(how = How.CSS, using = "div.woocommerce-notices-wrapper ul.woocommerce-error[role='alert']")
-    public WebElement regInvalidInputRegError;
+    public WebElement regInvalidInputErrorMessage;
 
     @FindBy(how = How.CSS, using = "div.woocommerce-password-strength")
     public WebElement regPasswordWarning;
@@ -74,9 +76,13 @@ public class RegistrationPage extends BasePage {
 
 //====================================================================================\
 //Navigate to https://shop.demoqa.com/my-account/ and initialize web elements on page
-    public void navigateToRegistrationPage() {
+    public void navigateToMyAccountPage() {
 
-        BasePage.initializeBrowser("myAccountURL");
+        BasePage.initializeBrowser();
+    }
+
+    public void initRegistrationElements() {
+
         PageFactory.initElements(driver, this);
     }
 //====================================================================================\
@@ -87,12 +93,6 @@ public class RegistrationPage extends BasePage {
         Assert.assertEquals(driver.getTitle(), expectedPageTitle);
     }
 //====================================================================================\
-    //check register button is displayed
-    public void checkRegisterButtonIsDisplayed() {
-
-        Assert.assertTrue(registerButton.isDisplayed() );
-    }
-//====================================================================================\
     //click on register button
     public void registerButtonIsClicked() throws InterruptedException {
 
@@ -101,7 +101,7 @@ public class RegistrationPage extends BasePage {
     }
 //====================================================================================\
     //Check Registration Form is displayed with all the elements
-    public void checkRegistrationForm() throws InterruptedException {
+    public void checkRegistrationForm() {
 
         String regPolicyText = "Your personal data will be used to support your experience";
         WebElement[] elementsArray = {
@@ -121,10 +121,7 @@ public class RegistrationPage extends BasePage {
                 Assert.assertTrue(elementsArray[n].getText().contains(regPolicyText));
             }
         }
-        Thread.sleep(1000);
     }
-//====================================================================================\
-
 //====================================================================================\
     //check whether the Register Button is enabled
     public void checkRegisterButtonIsClickable(String clickable) {
@@ -168,33 +165,31 @@ public class RegistrationPage extends BasePage {
 
         List<Map<String, String>> data = dataTable.asMaps(String.class, String.class);
 
-            if (data.get(0).get("username").isEmpty() ) {
-                regUsernameField.clear();
-            }else{
+
+        if (data.get(0).get("username") != null) {
+
                 regUsernameField.sendKeys(data.get(0).get("username"));
-            }
+        }
         Thread.sleep(1000);
 
-            if (data.get(0).get("email").isEmpty() ) {
-                regEmailField.clear();
-            }else{
+        if  (data.get(0).get("email") != null) {
+
                 regEmailField.sendKeys(data.get(0).get("email") );
-            }
+        }
         Thread.sleep(1000);
 
-            if (data.get(0).get("password").isEmpty()) {
-                regPasswordField.clear();
-            }else{
+        if  (data.get(0).get("password") != null) {
+
                 regPasswordField.sendKeys(data.get(0).get("password") );
-            }
+        }
         Thread.sleep(1000);
     }
 //====================================================================================\
     //check for correct error text upon invalid registration input submitted
-    public void checkRegistrationError(String expectedErrorText) {
+    public void checkRegistrationErrorMessage(String expectedErrorText) {
 
-        Assert.assertTrue(regInvalidInputRegError.isDisplayed() );
-        Assert.assertEquals(regInvalidInputRegError.getText(), expectedErrorText);
+        Assert.assertTrue(regInvalidInputErrorMessage.isDisplayed() );
+        Assert.assertEquals(regInvalidInputErrorMessage.getText(), expectedErrorText);
     }
 //====================================================================================\
     //check password warning when password is being typed in the password field

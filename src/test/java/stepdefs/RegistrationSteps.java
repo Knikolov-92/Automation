@@ -4,49 +4,59 @@ import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.*;
 import page_objects.BasePage;
 import page_objects.RegistrationPage;
+import static page_objects.RegistrationPage.MY_ACCOUNT_URL;
+
 
 public class RegistrationSteps {
 
 
 //==========================================general declarations==========================================\\
-    RegistrationPage regPage = new RegistrationPage();
-    BasePage basePage = new BasePage();
+    private RegistrationPage regPage = new RegistrationPage();
+    private BasePage basePage = new BasePage();
 //==========================================Test Preconditions==========================================\
 
-    @Given("^The user has navigated to My Account Page$")
-    public void theUserNavigatesToMyAccountPage() {
+    @Given("^The user has navigated to the Registration Page$")
+    public void userNavigatesToRegistrationPage() throws InterruptedException {
 
-        regPage.navigateToRegistrationPage();
+        regPage.navigateToMyAccountPage();
+        basePage.navigateToURL(MY_ACCOUNT_URL);
+        regPage.initRegistrationElements();
       }
 
-    @Then("^The user sees the correct MyAccount page title$")
-    public void checkTheCorrectMyAccountPageTitle() {
+    @Then("^The user sees the correct Registration page title$")
+    public void checkTheCorrectRegistrationPageTitle() {
 
        regPage.checkMyAccountPageTitle();
     }
 //==========================================Scenario Methods==========================================\
-    @When("^The user scrolls down the page$")
-    public void theUserScrollsThePage() throws InterruptedException {
+    @Given("^User enters personal details to register:$")
+    public void userEntersPersonalDetailsInRegForm(DataTable userInfo ) throws InterruptedException {
+
+        regPage.userEntersPersonalDetailsInRegForm(userInfo);
+    }
+//====================================================================================\
+    @Given("^Privacy policy link is clicked$")
+    public void privacyPolicyLinkIsClicked() throws InterruptedException {
+
+        regPage.clickPrivacyPolicyLink();
+    }
+//====================================================================================\
+    @When("^User enters valid, randomized personal details:$")
+    public void userEntersValidRandomizedPersonalDetails(DataTable dataTable) throws InterruptedException {
+
+        regPage.UserEntersValidRandomizedPersonalDetails(dataTable);
+    }
+//====================================================================================\
+    @When("^The user scrolls down the Registration page$")
+    public void userScrollsTheRegistrationPage() throws InterruptedException {
 
         basePage.scrollWindow(regPage.registerButton);
     }
 //====================================================================================\
-    @Then("^The user should see the Registration form$")
-    public void checkTheRegistrationFormIsDisplayed() throws InterruptedException {
+    @When("^BackToSite link is clicked$")
+    public void backToSiteLinkIsClicked() throws InterruptedException {
 
-        regPage.checkRegistrationForm();
-    }
-//====================================================================================\
-    @And("^The user should see the Register button$")
-    public void checkTheRegisterButtonIsDisplayed() {
-
-        regPage.checkRegisterButtonIsDisplayed();
-    }
-//====================================================================================\
-    @Given("^User enters personal details:$")
-    public void theUserEntersPersonalDetailsInRegForm(DataTable table ) throws InterruptedException {
-
-       regPage.userEntersPersonalDetailsInRegForm(table);
+        regPage.clickBackToSiteLinkAfterRegistering();
     }
 //====================================================================================\
     @When("^The Register Button is clicked$")
@@ -55,22 +65,16 @@ public class RegistrationSteps {
         regPage.registerButtonIsClicked();
     }
 //====================================================================================\
-    @But("^The browser should close$")
-    public void browserIsClosed() {
+    @Then("^The user should see the Registration form$")
+    public void userSeesTheRegistrationForm() {
 
-        basePage.endBrowserSession();
+        regPage.checkRegistrationForm();
     }
 //====================================================================================\
-    @But("^The window is closed$")
-    public void windowIsClosed() throws InterruptedException {
+    @Then("^The user should see the Register button$")
+    public void checkTheRegisterButtonIsDisplayed() {
 
-        basePage.endWindowSession();
-    }
-//====================================================================================\
-    @Given("^Privacy policy link is clicked$")
-    public void privacyPolicyLinkIsClicked() throws InterruptedException {
-
-       regPage.clickPrivacyPolicyLink();
+        basePage.checkWebElementIsDisplayed(regPage.registerButton);
     }
 //====================================================================================\
     @Then("^The user should see the privacy policy page in new tab$")
@@ -79,13 +83,13 @@ public class RegistrationSteps {
         regPage.checkPrivacyPolicyPage();
     }
 //====================================================================================\
-    @Then("^Error message with text \"([^\"]*)\" should be displayed$")
-    public void checkRegistrationErrorMessageIsDisplayed(String errorText) {
+    @Then("^Registration error message with text \"([^\"]*)\" should be displayed$")
+    public void registrationErrorMessageIsDisplayed(String errorText) {
 
-        regPage.checkRegistrationError(errorText);
+        regPage.checkRegistrationErrorMessage(errorText);
     }
 //====================================================================================\
-    @And("^The Register button should be enabled: \"([^\"]*)\"$")
+    @Then("^The Register button should be enabled: \"([^\"]*)\"$")
     public void checkTheRegisterButtonIsClickable(String buttonClickable) {
 
         regPage.checkRegisterButtonIsClickable(buttonClickable);
@@ -97,16 +101,10 @@ public class RegistrationSteps {
         regPage.checkPasswordWarning(warningText);
     }
 //====================================================================================\
-    @And("^The Password Hint should be displayed: \"([^\"]*)\"$")
+    @Then("^The Password Hint should be displayed: \"([^\"]*)\"$")
     public void checkPasswordHintIsDisplayed(String hintDisplayed) {
 
         regPage.checkPasswordHintDisplayed(hintDisplayed);
-    }
-//====================================================================================\
-    @Given("^User enters valid, randomized personal details:$")
-    public void theUserEntersValidRandomizedPersonalDetails(DataTable dataTable) throws InterruptedException {
-
-        regPage.UserEntersValidRandomizedPersonalDetails(dataTable);
     }
 //====================================================================================\
     @Then("^The successful registration page should be displayed$")
@@ -114,18 +112,12 @@ public class RegistrationSteps {
 
         regPage.checkSuccessfulRegistrationPageIsDisplayed();
     }
-//====================================================================================\
-    @When("^BackToSite link is clicked$")
-    public void backToSiteLinkIsClicked() throws InterruptedException {
-
-        regPage.clickBackToSiteLinkAfterRegistering();
-    }
 
     @Then("^User should be on correct default URL$")
     public void userShouldBeOnCorrectDefaultURL() {
 
         regPage.checkDefaultURLIsCorrect();
     }
-//====================================================================================\
 
+//====================================================================================\
 }

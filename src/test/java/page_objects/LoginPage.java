@@ -1,33 +1,99 @@
 package page_objects;
 
-import org.openqa.selenium.WebDriver;
+import io.cucumber.datatable.DataTable;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 
-public class LoginPage {
+import java.util.List;
+import java.util.Map;
 
-    private  WebDriver driver;
-    private final static String WEB_PAGE_URL = "https://shop.demoqa.com/my-account/";
+
+public class LoginPage extends RegistrationPage {
+
+//==========================================WebElements(locators)==========================================\
 
     @FindBy(id = "username")
-    WebElement usernameField;
+    public WebElement loginUsernameField;
 
     @FindBy(id = "password")
-    WebElement passwordField;
+    public WebElement loginPasswordField;
 
     @FindBy(name = "login")
-    WebElement loginButton;
+    public WebElement loginButton;
 
-    @FindBy(xpath = "//*[@id=\"customer_login\"]/div[1]/form/p[4]/a")
-    WebElement lostPassword;
+    @FindBy(name = "rememberme")
+    public WebElement loginRrememberMeCheckBox;
 
-    public LoginPage(WebDriver driver){
-        this.driver = driver;
-        PageFactory.initElements(driver,this);
+    @FindBy(css = "p.woocommerce-LostPassword.lost_password")
+    public WebElement loginLostPasswordLink;
+
+    @FindBy(css = "label[for='username']")
+    public WebElement loginUsernameLabel;
+
+    @FindBy(css = "label[for='password']")
+    public WebElement loginPasswordLabel;
+
+    @FindBy(how = How.CSS, using = "div.woocommerce-notices-wrapper ul.woocommerce-error[role='alert']")
+    public WebElement loginInvalidInputErrorMessage;
+
+//====================================================================================\
+    //init Webelements on Login page
+    public void initLoginElements(){
+
+        PageFactory.initElements(driver, this);
     }
 
-    public void open(){
-        driver.get(WEB_PAGE_URL);
+//====================================================================================\
+    //Check Login Form is displayed with all the elements
+    public void checkLoginForm() {
+
+        WebElement[] elementsArray = {
+                loginUsernameLabel, loginUsernameField,
+                loginPasswordLabel, loginPasswordField,
+                loginButton, loginRrememberMeCheckBox,
+                loginLostPasswordLink,
+                };
+//------------------------------------------------------------
+        for (int n = 0; n < elementsArray.length; n++) {
+
+            Assert.assertTrue(elementsArray[n].isDisplayed());
+        }
     }
+//====================================================================================\
+    //check for correct error text upon invalid login input submitted
+    public void checkLoginErrorMessage(String expectedErrorText) {
+
+        Assert.assertTrue(loginInvalidInputErrorMessage.isDisplayed() );
+        Assert.assertEquals(loginInvalidInputErrorMessage.getText(), expectedErrorText);
+    }
+//====================================================================================\
+    //click on login button
+    public void loginButtonIsClicked() throws InterruptedException {
+
+        loginButton.click();
+        Thread.sleep(3000);
+    }
+//====================================================================================\
+    //enter username/email and password in Login form
+    public void userEntersPersonalDetailsInLoginForm( DataTable dataTable) throws InterruptedException {
+
+        List<Map<String, String>> data = dataTable.asMaps(String.class, String.class);
+
+        if (data.get(0).get("username") != null) {
+
+            loginUsernameField.sendKeys(data.get(0).get("username"));
+        }
+        Thread.sleep(1000);
+
+        if  (data.get(0).get("password") != null) {
+
+            loginPasswordField.sendKeys(data.get(0).get("password") );
+        }
+        Thread.sleep(1000);
+    }
+
+
 }

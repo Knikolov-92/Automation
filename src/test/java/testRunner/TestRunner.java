@@ -5,7 +5,7 @@ import io.cucumber.testng.CucumberOptions;
 
 @CucumberOptions(features = {"src/test/java/features"},
                 glue = {"stepdefs"},
-                tags = {"@DebugTest"},
+                tags = {"@debug"},
                 plugin = {"pretty", "html:target/cucumber-pretty"},
                 monochrome = true
                 )

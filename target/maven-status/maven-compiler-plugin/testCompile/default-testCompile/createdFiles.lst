@@ -1,0 +1,6 @@
+page_objects\RegistrationPage.class
+testRunner\TestRunner.class
+stepdefs\Login.class
+stepdefs\RegistrationSteps.class
+page_objects\LoginPage.class
+page_objects\BasePage.class

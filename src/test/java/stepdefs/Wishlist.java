@@ -16,13 +16,12 @@ public class Wishlist {
     private WebDriver driver;
     private WishlistPage wishlist;
 
-    @Before
-    public void setUp(){
-        System.setProperty("webdriver.chrome.driver", "src/test/resources/drivers/chromedriver.exe");
-        driver = new ChromeDriver();
-        wishlist = new WishlistPage(driver);
-
-    }
+  //@Before
+  //public void setUp(){
+  //    System.setProperty("webdriver.chrome.driver", "src/test/resources/drivers/chromedriver.exe");
+  //    driver = new ChromeDriver();
+  //   wishlist = new WishlistPage(driver);
+  //}
 
     @Given("No items have been added to the wishlist")
     public void no_items_have_been_added_to_the_wishlist() {
@@ -57,8 +56,8 @@ public class Wishlist {
 //        throw new io.cucumber.java.PendingException();
 //    }
 
-    @After
-    public void tearDown(){
-        driver.close();
-    }
+    //@After
+    //public void tearDown(){
+      //  driver.close();
+    //}
 }
